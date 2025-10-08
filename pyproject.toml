@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "amplifier-module-hooks-scheduler-cost-aware"
+version = "1.0.0"
+description = "Cost and latency aware scheduler for Amplifier event-driven orchestration"
+readme = "README.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+dependencies = [
+    "amplifier-core>=1.0.0",
+]
+
+[project.entry-points."amplifier.modules"]
+hooks-scheduler-cost-aware = "amplifier_mod_hooks_scheduler_cost_aware:mount"

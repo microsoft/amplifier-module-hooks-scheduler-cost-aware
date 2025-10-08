@@ -1,0 +1,2 @@
+[amplifier.modules]
+hooks-scheduler-cost-aware = amplifier_mod_hooks_scheduler_cost_aware:mount
