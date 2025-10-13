@@ -16,6 +16,7 @@ curl -LsSf https://astral.sh/uv/install.sh | sh
 # Windows
 powershell -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
+
 ## Purpose
 
 Optimizes tool and agent selection based on cost and latency metrics to improve performance and reduce operational costs.
@@ -24,7 +25,7 @@ Optimizes tool and agent selection based on cost and latency metrics to improve 
 
 **Module Type:** Hook
 **Mount Point:** `hooks` registry
-**Entry Point:** `amplifier_mod_hooks_scheduler_cost_aware:mount`
+**Entry Point:** `amplifier_module_hooks_scheduler_cost_aware:mount`
 
 ## Configuration
 
@@ -40,11 +41,13 @@ config = {
 ## Behavior
 
 Registers handlers for decision events:
+
 - `decision:tool_resolution` - Select tool based on cost/latency optimization
 - `decision:agent_resolution` - Select agent considering resource costs
 - `decision:context_resolution` - Optimize context compaction decisions
 
 Returns resolution responses with:
+
 - Selected option
 - Optimization score (0.0-1.0)
 - Cost-based rationale
