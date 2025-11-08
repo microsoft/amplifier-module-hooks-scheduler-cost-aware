@@ -103,12 +103,12 @@ class CostAwareScheduler:
 
         Args:
             event: Event name
-            data: Contains tool, arguments, available_tools
+            data: Contains tool_name, tool_input, available_tools
 
         Returns:
             HookResult with action (continue, deny, or modify)
         """
-        tool_name = data.get("tool")
+        tool_name = data.get("tool_name")
         available_tools = data.get("available_tools", [])
 
         if not tool_name:
@@ -130,7 +130,7 @@ class CostAwareScheduler:
                     logger.info(f"Cost scheduler suggesting cheaper tool: {tool_name} → {cheaper_tool}")
                     return HookResult(
                         action="modify",
-                        data={"tool": cheaper_tool},
+                        data={"tool_name": cheaper_tool},
                         reason="Cost limit reached, using cheaper alternative",
                     )
 
@@ -149,12 +149,12 @@ class CostAwareScheduler:
 
         Args:
             event: Event name
-            data: Contains tool name and source
+            data: Contains tool_name and source
 
         Returns:
             HookResult (always continue)
         """
-        tool_name = data.get("tool")
+        tool_name = data.get("tool_name")
         tool_cost = self.tool_costs.get(tool_name, 1.0)
 
         self.session_cost += tool_cost
