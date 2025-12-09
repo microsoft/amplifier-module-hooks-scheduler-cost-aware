@@ -3,6 +3,9 @@ Cost-aware scheduler module for Amplifier.
 Observes and can veto/modify tool selections based on cost metrics.
 """
 
+# Amplifier module metadata
+__amplifier_module_type__ = "hook"
+
 import logging
 from typing import Any
 
